@@ -3,105 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatinho</title>
+    <title>Login e Cadastro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e9f7ef;
+        }
+        .form-container {
+            width: 380px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .form-toggle {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+        .form-toggle button,
+        .form-toggle a {
+            width: 48%;
+            background-color: #28a745;
+            border: none;
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .form-toggle button:hover,
+        .form-toggle a:hover {
+            background-color: #218838;
+        }
+        .form-toggle .active-btn {
+            background-color: #1e7e34;
+        }
+        .form-content {
+            display: none;
+        }
+        .form-content.active {
+            display: block;
+        }
+        .form-content h4 {
+            color: #28a745;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-content label {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .form-control {
+            border: 1px solid #28a745;
+        }
+        .btn-primary,
+        .btn-secondary {
+            background-color: #28a745;
+            border: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-    
-            <div class="col-md-4 p-0">
-                <div class="sidebar">
-                    <div class="header p-3 d-flex align-items-center">
-                        <img src="./assets/perfil.jpeg" class="rounded-circle me-3" width="55" height="50">
-                        <h5 class="mb-0">Conversas</h5>
-                        <div class="ms-auto">
-                            <i class="bi bi-chat-left-text fs-4 me-3"></i>
-                            <i class="bi bi-three-dots-vertical fs-4"></i>
-                        </div>
-                    </div>
-                    <div class="search p-3">
-                        <input type="text" class="form-control" placeholder="Pesquisar">
-                    </div>
-                    <div class="chat-list p-3">
-                        <div class="chat d-flex align-items-center p-2" onclick="openChat()">
-                            <img src="./assets/diego.jpg" class="rounded-circle me-3" alt="Contact" width="50" height="50">
-                            <div>
-                                <h6 class="mb-1">Diego Candido</h6>
-                          
-                            </div>
-                            <div class="ms-auto text-muted">
-                                <small</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-8 p-0 d-none d-md-block" id="chat-window">
-                <div class="chat-window">
-                    <div class="header p-3 d-flex align-items-center">
-
-                        <i class="bi bi-arrow-left fs-4 me-3 d-md-none" id="back-arrow" onclick="goBack()"></i>
-                        <img src="./assets/diego.jpg" class="rounded-circle me-3" alt="Contact" width="50" height="50">
-                        <h5 class="mb-0">Diego Candido</h5>
-                        <div class="ms-auto">
-                            <i class="bi bi-search fs-4 me-3"></i>
-                            <i class="bi bi-three-dots-vertical fs-4"></i>
-                        </div>
-                    </div>
-                    <div class="chat-box p-3">
-                        <div class="message message-received mb-3">
-                            <p>Oi, queria tirar uma dúvida</p>
-                            <span class="small text-muted">10:00</span>
-                        </div>
-                        <div class="message message-sent mb-3">
-                            <p>Oi sor, pode falar!</p>
-                            <span class="small text-muted">10:01</span>
-                        </div>
-                        <div class="message message-received mb-3">
-                            <p>Por que tu não ta no móveis?</p>
-                            <span class="small text-muted">10:02</span>
-                        </div>
-                        <div class="message message-sent mb-3">
-                            <p>nossa sor ☹️</p>
-                            <span class="small text-muted">10:01</span>
-                        </div>
-                    </div>
-                    <div class="chat-footer p-3">
-                        <div class="input-group">
-                            <button class="btn btn-light"><i class="bi bi-emoji-smile"></i></button>
-                            <input type="text" class="form-control" placeholder="Digite uma mensagem...">
-                            <button class="btn btn-light"><i class="bi bi-paperclip"></i></button>
-                            <button class="btn btn-primary"><i class="bi bi-send"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="form-container">
+    <div class="form-toggle">
+        <button id="login-btn" class="active-btn">Login</button>
+        <button id="register-btn" class="btn btn-secondary">Cadastro</button>
     </div>
 
-    <script>
-        function openChat() {
-            document.getElementById("chat-window").classList.remove("d-none");
-            document.querySelector(".sidebar").classList.add("d-none");
-        }
+    <!-- Formulário de Login -->
+    <div id="login-form" class="form-content active">
+        <h4>Login</h4>
+        <form>
+            <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="Digite seu email">
+            </div>
+            <div class="mb-3">
+                <label for="loginPassword" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Digite sua senha">
+            </div>
+            <a href="home.html" class="btn btn-primary w-100">Entrar</a>
+        </form>
+    </div>
 
-        function goBack() {
-            document.getElementById("chat-window").classList.add("d-none");
-            document.querySelector(".sidebar").classList.remove("d-none");
-        }
+    <!-- Formulário de Cadastro -->
+    <div id="register-form" class="form-content">
+        <h4>Cadastro</h4>
+        <form>
+            <div class="mb-3">
+                <label for="registerName" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="registerName" placeholder="Digite seu nome">
+            </div>
+            <div class="mb-3">
+                <label for="registerEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="registerEmail" placeholder="Digite seu email">
+            </div>
+            <div class="mb-3">
+                <label for="registerPassword" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="registerPassword" placeholder="Digite sua senha">
+            </div>
+            <button type="submit" class="btn btn-secondary w-100">Cadastrar</button>
+        </form>
+    </div>
+</div>
 
-        window.addEventListener("resize", function() {
-            if (window.innerWidth >= 768) {
-                document.getElementById("chat-window").classList.remove("d-none");
-                document.querySelector(".sidebar").classList.remove("d-none");
-            }
-        });
-    </script>
+<script>
+    document.getElementById('login-btn').addEventListener('click', function() {
+        document.getElementById('login-form').classList.add('active');
+        document.getElementById('register-form').classList.remove('active');
+        this.classList.add('active-btn');
+        document.getElementById('register-btn').classList.remove('active-btn');
+    });
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    document.getElementById('register-btn').addEventListener('click', function() {
+        document.getElementById('register-form').classList.add('active');
+        document.getElementById('login-form').classList.remove('active');
+        this.classList.add('active-btn');
+        document.getElementById('login-btn').classList.remove('active-btn');
+    });
+</script>
+
 </body>
 </html>
