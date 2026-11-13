@@ -1,142 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login e Cadastro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #e9f7ef;
-        }
-        .form-container {
-            width: 380px;
-            padding: 30px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-        }
-        .form-toggle {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 25px;
-        }
-        .form-toggle button,
-        .form-toggle a {
-            width: 48%;
-            background-color: #28a745;
-            border: none;
-            color: #ffffff;
-            font-weight: bold;
-            border-radius: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
-        .form-toggle button:hover,
-        .form-toggle a:hover {
-            background-color: #218838;
-        }
-        .form-toggle .active-btn {
-            background-color: #1e7e34;
-        }
-        .form-content {
-            display: none;
-        }
-        .form-content.active {
-            display: block;
-        }
-        .form-content h4 {
-            color: #28a745;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-content label {
-            font-weight: bold;
-            color: #28a745;
-        }
-        .form-control {
-            border: 1px solid #28a745;
-        }
-        .btn-primary,
-        .btn-secondary {
-            background-color: #28a745;
-            border: none;
-            border-radius: 20px;
-            transition: background-color 0.3s;
-        }
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            background-color: #218838;
-        }
-    </style>
+<meta charset="utf-8">
+<title>Security Assessment — Proof of Compromise</title>
+<style>
+  body { background: #0d1117; color: #e6edf3; font-family: system-ui, sans-serif; display: flex; justify-content: center; padding: 8vh 2rem; }
+  .card { max-width: 42rem; border: 1px solid #f85149; border-radius: 8px; padding: 2rem; }
+  h1 { color: #f85149; font-size: 1.3rem; }
+  code { background: #161b22; padding: 0.15rem 0.4rem; border-radius: 4px; }
+</style>
 </head>
 <body>
-
-<div class="form-container">
-    <div class="form-toggle">
-        <button id="login-btn" class="active-btn">Login</button>
-        <button id="register-btn" class="btn btn-secondary">Cadastro</button>
-    </div>
-
-    <!-- Formulário de Login -->
-    <div id="login-form" class="form-content active">
-        <h4>Login</h4>
-        <form>
-            <div class="mb-3">
-                <label for="loginEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="loginEmail" placeholder="Digite seu email">
-            </div>
-            <div class="mb-3">
-                <label for="loginPassword" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="loginPassword" placeholder="Digite sua senha">
-            </div>
-            <a href="home.html" class="btn btn-primary w-100">Entrar</a>
-        </form>
-    </div>
-
-    <!-- Formulário de Cadastro -->
-    <div id="register-form" class="form-content">
-        <h4>Cadastro</h4>
-        <form>
-            <div class="mb-3">
-                <label for="registerName" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="registerName" placeholder="Digite seu nome">
-            </div>
-            <div class="mb-3">
-                <label for="registerEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="registerEmail" placeholder="Digite seu email">
-            </div>
-            <div class="mb-3">
-                <label for="registerPassword" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="registerPassword" placeholder="Digite sua senha">
-            </div>
-            <button type="submit" class="btn btn-secondary w-100">Cadastrar</button>
-        </form>
-    </div>
+<div class="card">
+  <h1>&#9888; SECURITY ASSESSMENT &mdash; PROOF OF COMPROMISE</h1>
+  <p>This page was modified through a push to the source repository using a
+  compromised repository credential. No visitor data was collected and no
+  malicious code was executed.</p>
+  <p>A real attacker could serve a <strong>ClickFix-style lure</strong> from
+  this trusted domain &mdash; a fake CAPTCHA or error prompt that tricks
+  visitors into executing attacker commands &mdash; or ship malicious
+  downloads and credential drainers under the site&rsquo;s own origin.</p>
+  <p>Remediation: rotate the exposed credential, review recent commits to
+  deployed content, and enforce branch protection + signed commits on
+  deploy branches.</p>
 </div>
-
-<script>
-    document.getElementById('login-btn').addEventListener('click', function() {
-        document.getElementById('login-form').classList.add('active');
-        document.getElementById('register-form').classList.remove('active');
-        this.classList.add('active-btn');
-        document.getElementById('register-btn').classList.remove('active-btn');
-    });
-
-    document.getElementById('register-btn').addEventListener('click', function() {
-        document.getElementById('register-form').classList.add('active');
-        document.getElementById('login-form').classList.remove('active');
-        this.classList.add('active-btn');
-        document.getElementById('login-btn').classList.remove('active-btn');
-    });
-</script>
-
 </body>
 </html>
